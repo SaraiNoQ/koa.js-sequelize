@@ -1,0 +1,30 @@
+{
+  "name": "koa_1",
+  "version": "1.0.0",
+  "description": "a study project for koa.js",
+  "main": "main,js",
+  "scripts": {
+    "test": "test",
+    "dev": "nodemon main.js",
+    "lf": "eslint --fix --ext .js --ext .jsx --ext .vue ./"
+  },
+  "keywords": [
+    "koa.js"
+  ],
+  "author": "SaraiNoQ",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/router": "^10.1.1",
+    "dotenv": "^16.0.0",
+    "koa": "^2.13.4",
+    "koa-body": "^4.2.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^7.0.0-alpha2.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-vue": "^8.5.0"
+  }
+}
