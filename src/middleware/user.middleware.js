@@ -1,5 +1,5 @@
 const { getUser } = require('../service/user.service')
-const { userAlreadyExited, userFormatError } = require('../constants/err.type') 
+const { userAlreadyExited, userFormatError, userRegisterError } = require('../constants/err.type') 
 
 const userValidator = async (ctx, next) => {
 	// get request data
@@ -8,6 +8,7 @@ const userValidator = async (ctx, next) => {
 	// 判断数据合法
 	if (!user_name || !password) {
 		// emit error info, use app.on method to accept it.
+		console.error('register info is illegal!')
 		ctx.app.emit('error', userFormatError, ctx)
 		return
 	}
@@ -19,12 +20,20 @@ const userValidator = async (ctx, next) => {
 const userVertifier = async (ctx, next) => {
 	const {user_name} = ctx.request.body
 	// 数据合理
-	if (await getUser({user_name})) {
-		console.log('resp2')
-		ctx.app.emit('error', userAlreadyExited, ctx)
-		return 
+	const res = await getUser({user_name})
+	try {
+		if (res) {
+			console.error('register info is already exited!')
+			ctx.app.emit('error', userAlreadyExited, ctx)
+			return
+		}
+	} catch (error) {
+		console.error('retrieve user info failed!')
+		ctx.app.emit('error', userRegisterError, ctx)
+		return
 	}
 
+	// 如果遇到错误就要return，防止进入下一个中间件
 	await next()
 }
 
