@@ -114,3 +114,13 @@ cloud SQL
 ### 十二、登录验证
 
 ### 十三、颁发token
+
+用户认证，登录成功后，给用户颁发一个令牌token
+
+jwt：json web token
+
+- header：头部
+- payload：载荷
+- signature：签名
+
+安装jsonwebtoken

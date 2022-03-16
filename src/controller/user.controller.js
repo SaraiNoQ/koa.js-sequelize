@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // 获取请求，调用service操作model层方法
-const {createUser, getUserInfo} = require('../service/user.service')
+const {createUser, getUserInfo, getUser} = require('../service/user.service')
 const { userRegisterError } = require('../constants/err.type')
+const jwt = require('jsonwebtoken')
+// eslint-disable-next-line no-undef
+const { JWT_SECRET } = require('../config/config.default')
 
 class UserController {
 	async register (ctx, next) {
@@ -26,8 +29,24 @@ class UserController {
 		
 	}
 	async login (ctx, next) {
-		console.log('test')
 		ctx.body = `User:${ctx.request.body.user_name} Login Success!`
+		const {user_name} = ctx.request.body
+
+		// 获取用户信息（在token的payload中，记录id，user_name，is_admin）
+		try {
+			// 获取到除了password之外的属性
+			const {password, ...res} = await getUser({user_name})
+
+			ctx.body = {
+				code: 0,
+				message: 'login success!',
+				result: {
+					token: jwt.sign(res, JWT_SECRET, {expiresIn: '1d'})
+				}
+			}
+		} catch (error) {
+			console.error('login error', error)
+		}
 	}
 }
 
