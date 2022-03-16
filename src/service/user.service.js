@@ -33,7 +33,7 @@ class UserService {
 	// retrieve in database
 	async getUser({user_name}) {
 		const res = await User.findOne({
-			attributes: ['user_name'],
+			attributes: ['user_name', 'password'],
 			where: {user_name}
 		})
 		// console.log('res', res ? res.dataValues : null)

@@ -98,4 +98,19 @@ cloud SQL
 
 ### 十一、密码加密
 
-- 
+- 安装bcryptjs库
+
+- ```js
+  // 生成密钥
+  	const salt = bcrypt.genSaltSync(10)
+  // 生成密文
+  	const hash = bcrypt.hashSync(password, salt)
+  // 密码比对 
+      bcrypt.compareSync(password, res.password)
+  ```
+
+   
+
+### 十二、登录验证
+
+### 十三、颁发token

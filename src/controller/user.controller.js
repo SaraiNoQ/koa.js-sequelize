@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// 获取请求，调用model层方法
+// 获取请求，调用service操作model层方法
 const {createUser, getUserInfo} = require('../service/user.service')
 const { userRegisterError } = require('../constants/err.type')
 
@@ -7,29 +7,6 @@ class UserController {
 	async register (ctx, next) {
 		// 1. get request
 		const {user_name, password} = ctx.request.body
-		
-		// 数据合法
-		// if (!user_name || !password) {
-		// 	ctx.status = 400
-		// 	ctx.body = {
-		// 		code: '10001',
-		// 		message: 'nickname or password is null!',
-		// 		result: ''
-		// 	}
-		// 	return
-		// }
-		// 数据合理
-		// if (await getUser({user_name})) {
-		// 	console.log('resp2')
-		// 	ctx.status = 409,
-		// 	ctx.body = {
-		// 		code: '10002',
-		// 		message: 'nickname duplicate',
-		// 		result: ''
-		// 	}
-		// 	return 
-		// }
-		
 		try {
 			// 2. crud database
 			const res = await createUser(user_name, password)
@@ -49,7 +26,8 @@ class UserController {
 		
 	}
 	async login (ctx, next) {
-		ctx.body = 'User Login Success!'
+		console.log('test')
+		ctx.body = `User:${ctx.request.body.user_name} Login Success!`
 	}
 }
 
