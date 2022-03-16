@@ -2,8 +2,8 @@
 const User = require('../model/user.model')
 
 class UserService {
+	// create in database
 	async createUser(user_name, password) {
-		// todo: write to mysql
 		// 对象解构
 		const res = await User.create({
 			user_name,
@@ -13,6 +13,7 @@ class UserService {
 		return res.dataValues
 	}
 
+	// retrieve in database
 	async getUserInfo({id, user_name, password, is_admin}) {
 		const whereOpt = {}
 
@@ -29,6 +30,7 @@ class UserService {
 		return res ? res.dataValues : null
 	}
 
+	// retrieve in database
 	async getUser({user_name}) {
 		const res = await User.findOne({
 			attributes: ['user_name'],
