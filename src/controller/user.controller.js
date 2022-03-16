@@ -29,7 +29,6 @@ class UserController {
 		
 	}
 	async login (ctx, next) {
-		ctx.body = `User:${ctx.request.body.user_name} Login Success!`
 		const {user_name} = ctx.request.body
 
 		// 获取用户信息（在token的payload中，记录id，user_name，is_admin）
@@ -41,11 +40,11 @@ class UserController {
 				code: 0,
 				message: 'login success!',
 				result: {
-					token: jwt.sign(res, JWT_SECRET, {expiresIn: '1d'})
+					token: jwt.sign(res, JWT_SECRET, { expiresIn: '1h' })
 				}
 			}
 		} catch (error) {
-			console.error('login error', error)
+			console.error('login error!', error)
 		}
 	}
 }

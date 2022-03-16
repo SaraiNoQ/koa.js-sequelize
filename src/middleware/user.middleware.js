@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 
-const { getUser } = require('../service/user.service')
+const { getUser, updateById } = require('../service/user.service')
 const { userAlreadyExited, userFormatError, userRegisterError, userNotExited, userLoginError, invalidPassword } = require('../constants/err.type') 
 
 const userValidator = async (ctx, next) => {
@@ -75,9 +75,20 @@ const vertifyLogin = async (ctx, next) => {
 	await next()
 }
 
+const changePassword = async (ctx, next) => {
+	// 获取用户新的信息
+	const id = ctx.state.user.id
+	const password = ctx.request.body.password
+	// 操作数据库
+	await updateById({id, password})
+
+	await next()
+}
+
 module.exports = {
 	userValidator,
 	userVertifier,
 	cryptPassword,
-	vertifyLogin
+	vertifyLogin,
+	changePassword
 }

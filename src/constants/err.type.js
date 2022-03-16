@@ -29,5 +29,15 @@ module.exports = {
 		code: '10006',
 		message: 'password is wrong!',
 		result: ''
+	},
+	TokenExpiredError: {
+		code: '10101',
+		message: 'token is pasttime!',
+		result: ''
+	},
+	invalidToken: {
+		code: '10102',
+		message: 'token is invalid!',
+		result: ''
 	}
 }
