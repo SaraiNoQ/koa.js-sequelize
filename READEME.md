@@ -139,3 +139,11 @@ auth中间件
 ### 十四、改写router
 
 在router目录下写一个入口文件，利用fs.readdirSync方法，加载文件夹中所有路由
+
+### 十五、上传图片
+
+- 安装koa-static
+- 配置body，改变multipart和formidable
+- 利用ctx.request.files属性，获取到上传的图片
+- 通过path.basename方法获取上传图片的名字
+- 

@@ -44,5 +44,20 @@ module.exports = {
 		code: '10102',
 		message: 'token is invalid!',
 		result: ''
-	}
+	},
+	noPermission: {
+		code: '10103',
+		message: 'no permission!',
+		result: ''
+	},
+	fileUploadError: {
+		code: '10201',
+		message: 'file upload failed!',
+		result: ''
+	},
+	fileTypeError: {
+		code: '10202',
+		message: 'file type wrong!',
+		result: ''
+	},
 }
