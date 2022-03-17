@@ -124,3 +124,18 @@ jwt：json web token
 - signature：签名
 
 安装jsonwebtoken
+
+- jwt.sign
+- jwt.verify
+
+auth中间件
+
+- token的获取方式
+
+用户登出
+
+- 删除用户的token
+
+### 十四、改写router
+
+在router目录下写一个入口文件，利用fs.readdirSync方法，加载文件夹中所有路由

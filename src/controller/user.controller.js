@@ -28,6 +28,7 @@ class UserController {
 		}
 		
 	}
+	
 	async login (ctx, next) {
 		const {user_name} = ctx.request.body
 

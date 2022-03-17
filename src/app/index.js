@@ -1,5 +1,5 @@
 const koa = require('koa')
-const userRouter = require('../router/user.route')
+const userRouter = require('../router')
 const body = require('koa-body')
 const errHandler = require('./errHandler')
 
@@ -9,7 +9,8 @@ const app = new koa()
 app
 	.use(body())
 	.use(userRouter.routes())
-
+	// 没有写的请求类型返回405错误
+	.use(userRouter.allowedMethods())
 // uniform error handle
 app.on('error', errHandler)
 module.exports = app

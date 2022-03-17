@@ -40,9 +40,16 @@ class UserService {
 		return res ? res.dataValues : null
 	}
 
-	async updateById({id, password}) {
-		const change = {password}
+	// update in database
+	async updateById({id, password, user_name, is_admin}) {
+		const change = {}
 		const whereOpt = {id}
+
+		// 增加update复用性
+		password && Object.assign(change, {password})
+		user_name && Object.assign(change, {user_name})
+		is_admin && Object.assign(change, {is_admin})
+		
 		const res = await User.update(change, {where: whereOpt})
 		return res
 	}
