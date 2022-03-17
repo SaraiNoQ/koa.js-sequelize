@@ -163,4 +163,3 @@ auth中间件
 - 配置body，改变multipart和formidable
 - 利用ctx.request.files属性，获取到上传的图片
 - 通过path.basename方法获取上传图片的名字
-- 
