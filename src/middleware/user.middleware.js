@@ -1,7 +1,14 @@
 const bcrypt = require('bcryptjs')
 
 const { getUser, updateById } = require('../service/user.service')
-const { userAlreadyExited, userFormatError, userRegisterError, userNotExited, userLoginError, invalidPassword } = require('../constants/err.type') 
+const { userAlreadyExited,
+	userFormatError,
+	userRegisterError,
+	userNotExited,
+	userLoginError,
+	invalidPassword,
+	updatePswError 
+} = require('../constants/err.type') 
 
 const userValidator = async (ctx, next) => {
 	// get request data
@@ -79,10 +86,17 @@ const changePassword = async (ctx, next) => {
 	// 获取用户新的信息
 	const id = ctx.state.user.id
 	const password = ctx.request.body.password
-	// 操作数据库
-	await updateById({id, password})
 
-	await next()
+	// 操作数据库
+	if (await updateById({id, password})) {
+		ctx.body = {
+			code: 0,
+			message: 'password update!',
+			result: ''
+		}
+	} else {
+		ctx.app.emit('error', updatePswError, ctx)
+	}
 }
 
 module.exports = {

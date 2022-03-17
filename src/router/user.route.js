@@ -12,8 +12,6 @@ router.post('/register', userValidator, userVertifier, cryptPassword, register)
 
 router.post('/login', userValidator, vertifyLogin, login)
 
-router.patch('/', auth, changePassword, (ctx, next) => {
-	ctx.body = '修改密码成功'
-})
+router.patch('/', auth, cryptPassword, changePassword)
 
 module.exports = router

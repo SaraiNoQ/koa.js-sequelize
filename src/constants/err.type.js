@@ -30,6 +30,11 @@ module.exports = {
 		message: 'password is wrong!',
 		result: ''
 	},
+	updatePswError: {
+		code: '10007',
+		message: 'update password error!',
+		result: ''
+	},
 	TokenExpiredError: {
 		code: '10101',
 		message: 'token is pasttime!',

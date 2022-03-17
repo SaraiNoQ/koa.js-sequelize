@@ -44,7 +44,7 @@ class UserService {
 		const change = {password}
 		const whereOpt = {id}
 		const res = await User.update(change, {where: whereOpt})
-		console.log('res', res)
+		return res
 	}
 }
 
