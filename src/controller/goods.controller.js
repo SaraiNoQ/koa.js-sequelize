@@ -1,6 +1,7 @@
 const path = require('path')
 
-const { fileUploadError, fileTypeError } = require('../constants/err.type')
+const { fileUploadError, fileTypeError, createGoodsError, updateGoodsError } = require('../constants/err.type')
+const { createGoods, updateGoods } = require('../service/goods.service')
 
 
 class GoodsController {
@@ -23,6 +24,38 @@ class GoodsController {
 			}
 		} else {
 			return ctx.app.emit('error', fileUploadError, ctx)
+		}
+	}
+
+	async create (ctx, next) {
+		try {
+			const res = await createGoods(ctx.request.body)
+			ctx.body = {
+				code: 0,
+				message: 'create goods success!',
+				result: res
+			}
+		} catch (error) {
+			console.error('create goods info error!')
+			return ctx.app.emit('error', createGoodsError, ctx)
+		}
+	}
+
+	async update (ctx, next) {
+		try {
+			const res = await updateGoods(ctx.request.body)
+			// 根据body.result可以知道，无需写成错误
+			// if (!res[0]) {
+			// 	return ctx.app.emit('error', updateGoodsError, ctx)
+			// }
+			ctx.body = {
+				code: 0,
+				message: 'update goods info success!',
+				result: res
+			}
+		} catch (error) {
+			console.error('update goods info error!')
+			return ctx.app.emit('error', updateGoodsError, ctx)
 		}
 	}
 }

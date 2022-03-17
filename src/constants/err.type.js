@@ -60,4 +60,19 @@ module.exports = {
 		message: 'file type wrong!',
 		result: ''
 	},
+	goodsFormatError: {
+		code: '10203',
+		message: 'goods info format wrong!',
+		result: ''
+	},
+	createGoodsError: {
+		code: '10204',
+		message: 'create goods info error!',
+		result: ''
+	},
+	updateGoodsError: {
+		code: '10205',
+		message: 'update goods info error!',
+		result: ''
+	}
 }
