@@ -28,6 +28,11 @@ class GoodsService {
 		// res是一个[number], number = 影响的行数
 		return res
 	}
+
+	async removeGoods (id) {
+		const res = await Goods.destroy({where: {id}})
+		return res
+	}
 }
 
 module.exports = new GoodsService()

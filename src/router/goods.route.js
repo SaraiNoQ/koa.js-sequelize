@@ -2,7 +2,7 @@ const Router = require('@koa/router')
 
 const router = new Router({ prefix: '/goods'})
 
-const { upload, create, update } = require('../controller/goods.controller')
+const { upload, create, update, remove } = require('../controller/goods.controller')
 const { auth, hadAdminPermission } = require('../middleware/auth.middleware')
 const { validator,  } = require('../middleware/goods.middleware')
 
@@ -13,6 +13,9 @@ router.post('/upload', auth, hadAdminPermission, upload)
 router.post('/', auth, hadAdminPermission, validator, create)
 
 // 修改商品信息
-router.patch('/', auth, hadAdminPermission, validator, update)
+router.put('/', auth, hadAdminPermission, validator, update)
+
+// 硬删除商品信息
+router.delete('/:id', auth, hadAdminPermission, remove)
 
 module.exports = router

@@ -74,5 +74,10 @@ module.exports = {
 		code: '10205',
 		message: 'update goods info error!',
 		result: ''
-	}
+	},
+	removeGoodsError: {
+		code: '10206',
+		message: 'remove goods info error!',
+		result: ''
+	},
 }

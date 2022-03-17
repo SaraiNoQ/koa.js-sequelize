@@ -1,5 +1,3 @@
-
-
 const { fileTypeError, goodsFormatError } = require('../constants/err.type')
 
 const fileType = async (ctx, next) => {

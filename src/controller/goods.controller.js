@@ -1,7 +1,7 @@
 const path = require('path')
 
-const { fileUploadError, fileTypeError, createGoodsError, updateGoodsError } = require('../constants/err.type')
-const { createGoods, updateGoods } = require('../service/goods.service')
+const { fileUploadError, fileTypeError, createGoodsError, updateGoodsError, removeGoodsError } = require('../constants/err.type')
+const { createGoods, updateGoods, removeGoods } = require('../service/goods.service')
 
 
 class GoodsController {
@@ -56,6 +56,20 @@ class GoodsController {
 		} catch (error) {
 			console.error('update goods info error!')
 			return ctx.app.emit('error', updateGoodsError, ctx)
+		}
+	}
+
+	async remove (ctx, next) {
+		try {
+			const res = await removeGoods(ctx.params.id)
+			ctx.body = {
+				code: 0,
+				message: 'remove goods info success!',
+				result: res
+			}
+		} catch (error) {
+			console.error('remove goods info error!')
+			return ctx.app.emit('error', removeGoodsError, ctx)
 		}
 	}
 }
