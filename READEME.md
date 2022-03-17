@@ -2,29 +2,46 @@
 
 
 
-cloud SQL
+#### cloud SQL
 
-[手动部署MySQL数据库（CentOS 7） (aliyun.com)](https://help.aliyun.com/document_detail/116727.htm?spm=a2c4g.11186623.0.0.76f01748e1JGIG#concept-221087)
-
-
+[手动部署MySQL数据库（CentOS 7）](https://help.aliyun.com/document_detail/116727.htm?spm=a2c4g.11186623.0.0.76f01748e1JGIG#concept-221087)
 
 
 
-###二、准备
+#### cloud git
 
-1.合理性分析
-2.需求分析
-3.概要设计（原型图）
-
-###三、技术分析
-1.技术选型
-2.系统框架
-3.数据库设计
-4.接口设计（写出接口文档，方便前端mock）
+[云主机搭建Git服务器 - 云+社区 - 腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1367561)
 
 
 
-##koa
+#### nextcloud
+
+https://www.cnblogs.com/shipment/p/14011910.html
+
+
+
+#### cloudreve
+
+[(2条消息) centos7下安装cloudreve，自建网盘_TodChen_Blogger的博客-CSDN博客](
+
+
+
+### 二、准备
+
+1. 合理性分析
+2. 需求分析
+3. 概要设计（原型图）
+
+### 三、技术分析
+
+1. 技术选型
+2. 系统框架
+3. 数据库设计
+4. 接口设计（写出接口文档，方便前端mock）
+
+
+
+## koa
 
 ### 一、初始化项目
 
